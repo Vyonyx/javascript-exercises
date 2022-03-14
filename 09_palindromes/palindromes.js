@@ -1,9 +1,11 @@
 const palindromes = function (inputWord) {
-    const word = inputWord.toLowerCase().replace(/,!'"/g, '');
-    const ln = word.length;
+    const word = inputWord.replace(/!|,| |\./g, '').toLowerCase();
 
     for (w in word) {
-        if (word[w] != word[(w + 1) * -1]) {return false}
+        const reverseIndex = word.length - parseInt(w) - 1;
+        if (word[parseInt(w)] === word[reverseIndex]) {
+            continue
+        } else {return false}
     };
     return true
 };
